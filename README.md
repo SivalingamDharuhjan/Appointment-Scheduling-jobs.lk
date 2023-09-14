@@ -1,10 +1,7 @@
 # Appointment-Scheduling-jobs.lk
 "Web-based Jobs.lk consultation management system for The Jobs, a Colombo-based center, offering appointment scheduling and efficient reporting for job seekers going abroad."
 
-# Appointment-Scheduling-jobs.lk using Java
-
-![alt text](https://i.ibb.co/FVv7HkK/Homepages.png)
-
+![Homepages](https://github.com/SivalingamDharuhjan/Appointment-Scheduling-jobs.lk/assets/135720822/bc4bef51-2abf-483e-89e8-0ecb04300b17)
 
 # The Project was developed using the following:
 
