@@ -366,9 +366,9 @@
                                     <td></td>
 
 
-                                    <td><a href="editconsultant.jsp?id="
-                                           class="btn btn-sm btn-primary" >Edit</a> |
-                                        <a href="#">Delete</a>
+                                    <td><a href="EditConsultant.jsp?id="
+                                           class="btn btn-sm btn-primary" >Edit</a> 
+                                      
 
                                 </tr>
                             </tbody>
