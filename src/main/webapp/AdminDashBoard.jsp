@@ -1,3 +1,5 @@
+<%@page import="com.entity.Appointment"%>
+<%@page import="com.dao.AppointmentDao"%>
 <%@page import="com.entity.Admin"%>
 <%@page import="com.dao.AdminDao"%>
 <%@page import="com.dao.JobSeekerDao"%>
@@ -462,9 +464,7 @@
                 <h2>Appointment Details</h2>
                 <div class="flex-container">
                     <div class="user-table">
-                        <div class="button-container">
-                        <a href="CreateAppointment.jsp" style="text-decoration: none;"> Add Appointment</a> 
-                        </div>
+                        <a href="CreateAppointment.jsp">Add Appointment</a>
                         <br><br>
                         <table>
                             <thead>
@@ -476,26 +476,33 @@
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody id="appointment-details"> <!-- Added ID for the tbody element -->
-                                <!-- Example appointment data (replace with dynamic data from your backend) -->
-                                 
+                            <tbody id="appointment-details-body">
+                                <%
+                                    AppointmentDao dao = new AppointmentDao(dbconnect.getConn());
+                                    List<Appointment> appointmentList = dao.getAllAppointment();
+                                    for (Appointment appointment : appointmentList) {
+                                %>
                                 <tr>
-                                    <td>1</td>
-                                    <td>21</td>
-                                    <td>10</td>
-                                    <td>2023-09-10 10:00 AM</td>
+                                    <td><%= appointment.getId()%></td>
+                                    <td><%= appointment.getConsultant_id()%></td>
+                                    <td><%= appointment.getJobseeker_id()%></td>
+                                    <td><%= appointment.getAppointment_datetime()%></td>
                                     <td>
-                                        <a href="AppointmentReschedule.jsp">Reschedule</a> |
-                                        <a href="AppointmentDelete.jsp">Cancel</a>
+                                        <a href="AppointmentReschedule.jsp?id=<%= appointment.getId()%>"
+                                           class="btn btn-sm btn-primary">Rescheduling</a>
+                                        <a href="AppointmentDelete.jsp?id=<%= appointment.getId()%>"
+                                           class="btn btn-sm btn-danger">Cancel</a>
                                     </td>
                                 </tr>
                                 <!-- Add more appointment rows as needed -->
+                                <%
+                                    }
+                                %>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </section>
-
             <script>
                 // Function to add a new row to the appointment table
                 function addNewAppointment() {
