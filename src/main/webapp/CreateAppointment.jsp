@@ -1,7 +1,7 @@
 <%-- 
     Document   : ConsultantSignUp.jsp
     Created on : 10-Aug-2023, 18:28:53
-    Author     :  DELL
+    Author     : DELL
 --%>
 
 <%@page import="com.entity.Jobseeker"%>
@@ -102,7 +102,7 @@
                 justify-content: center;
                 align-items: center;
                 height: 5vh;
-                background-color: #3a34eb;
+                background-color:#3a34eb;
 
             }
 
