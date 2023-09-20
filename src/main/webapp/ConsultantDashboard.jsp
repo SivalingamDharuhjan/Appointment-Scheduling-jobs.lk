@@ -1,3 +1,4 @@
+<%@page import="com.entity.Appointment"%>
 <%@page import="com.entity.Admin"%>
 <%@page import="com.dao.AdminDao"%>
 <%@page import="com.dao.JobSeekerDao"%>
@@ -13,7 +14,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Jobs Ceylon - Consultant </title>
+        <title>Jobs.lk - Consultant </title>
         <style>
             /* Global Styles */
             body {
@@ -365,10 +366,11 @@
                                     <td></td>
 
 
-                                    <td><a href="editconsultant.jsp?id="
-                                           class="btn btn-sm btn-primary" >Edit</a> |
-                                        <a href="#">Delete</a>
-
+                                     <td>
+                                        <a href="AppointmentReschedule.jsp?id=%= appointment.getId()%>"
+                                           class="btn btn-sm btn-primary">Edit</a>
+                                       
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
