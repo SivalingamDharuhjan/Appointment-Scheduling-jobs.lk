@@ -16,7 +16,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Admin DashBoard | Edit Consultant</title>
+        <title>Admin DashBoard | Edit Jobseeker</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <style>
             /* -------------- NAV BAR STYLE ---------------- */
@@ -275,7 +275,7 @@
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label for="fname"><b>First Name</b></label>
-                        <input type="text" value="<%=jobseeker.getFname()%>"  name="fname" class="form-control" id="fname" placeholder="Enter First Name">
+                        <input type="text" value="<%=jobseeker.getFname()%>" name="fname" class="form-control" id="fname" placeholder="Enter First Name">
                         <small id="fname_alert"></small>
                     </div>
                     <div class="col-md-6 form-group">
@@ -289,7 +289,7 @@
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label for="email"><b>Email Address</b> </label>
-                        <input type="email" value="<%=jobseeker.getEmail()%>" name="email" class="form-control" id="email" placeholder="Enter Email Address" readonly>
+                        <input type="email" value="<%=jobseeker.getEmail()%>"  name="email" class="form-control" id="email" placeholder="Enter Email Address" readonly>
                         <small id="email_alert"></small>
                     </div>
                     <div class="col-md-6 form-group">
@@ -300,93 +300,87 @@
                 </div>
 
                 <div class="row">
-
-                    <div class="col-md-6 form-group">
-                        <label for="highestqualification"><b>Highest Qualification </b></label>
-                        <input type="text" value="<%=jobseeker.getHighestqualification()%>" name="highestqualification" class="form-control" id="highestqualification" placeholder="Enter Highest Qualification">
-                        <small id="highestqualification_alert"></small>
-                        <div id="highestqualification_alert"></div>
+                      <div class="col-md-6 form-group">
+                        <label for="highestQualification"><b>Highest Qualification</b></label>
+                        <input type="text" value="<%=jobseeker.getHighestqualification()%>" name="phone" class="form-control" id="highestQualification" placeholder="Enter Highest Qualification">
+                        <small id="highestQualification_alert"></small>
                     </div>
+
                     <div class="col-md-6 form-group">
                         <label for="phoneNumber"><b>Phone Number</b></label>
                         <input type="text" value="<%=jobseeker.getPhoneNumber()%>" name="phone" class="form-control" id="phoneNumber" placeholder="Enter Phone Number">
                         <small id="phoneNumber_alert"></small>
                     </div>
+                </div>
+                <br>
+
 
                 </div>
+                <br>
 
 
+                <input type="hidden" name="id" value="<%=jobseeker.getId()%>">
 
+                <button type="submit" onclick="GetData();" class="btn-submit">Update</button>
+                <br><br>
+
+            </form>
         </div>
-        <br>
 
 
-    </div>
-    <br>
+        <script>
+            function validateForm() {
+                var email = document.getElementById("email").value;
+                var password = document.getElementById("password").value;
+                var privacyCheckbox = document.getElementById("privacyCheckbox").checked;
+                var isValid = true;
 
+                if (email === "") {
+                    document.getElementById("email_alert").textContent = "Email is required.";
+                    document.getElementById("email_alert").style.color = "red";
+                    isValid = false;
+                } else {
+                    document.getElementById("email_alert").textContent = "";
+                }
 
-    <input type="hidden" name="id" value="<%= jobseeker.getId() %>">
+                if (password === "") {
+                    document.getElementById("password_alert").textContent = "Password is required.";
+                    document.getElementById("password_alert").style.color = "red";
+                    isValid = false;
+                } else {
+                    document.getElementById("password_alert").textContent = "";
+                }
 
-    <button type="submit" onclick="GetData();" class="btn-submit">Update</button>
-    <br><br>
+                if (!privacyCheckbox) {
+                    document.getElementById("privacy_alert").textContent = "You must agree to the Privacy Policy.";
+                    isValid = false;
+                } else {
+                    document.getElementById("privacy_alert").textContent = "";
+                }
 
-</form>
-</div>
-
-
-<script>
-    function validateForm() {
-        var email = document.getElementById("email").value;
-        var password = document.getElementById("password").value;
-        var privacyCheckbox = document.getElementById("privacyCheckbox").checked;
-        var isValid = true;
-
-        if (email === "") {
-            document.getElementById("email_alert").textContent = "Email is required.";
-            document.getElementById("email_alert").style.color = "red";
-            isValid = false;
-        } else {
-            document.getElementById("email_alert").textContent = "";
-        }
-
-        if (password === "") {
-            document.getElementById("password_alert").textContent = "Password is required.";
-            document.getElementById("password_alert").style.color = "red";
-            isValid = false;
-        } else {
-            document.getElementById("password_alert").textContent = "";
-        }
-
-        if (!privacyCheckbox) {
-            document.getElementById("privacy_alert").textContent = "You must agree to the Privacy Policy.";
-            isValid = false;
-        } else {
-            document.getElementById("privacy_alert").textContent = "";
-        }
-
-        return isValid;
-    }
-
-    function GetData() {
-        console.log("Button clicked!"); // Add this line
-
-        if (validateForm()) {
-            // Proceed with registration
-            // You can add your registration logic here
-
-            var successMessage = "Jobseeker details saved successfully.";
-            var errorMessage = "Failed to save Jobseeker details.";
-            var isSuccess = true;
-
-            if (isSuccess) {
-                alert(successMessage);
-            } else {
-                alert(errorMessage);
+                return isValid;
             }
-        }
-    }
-</script>
+
+            function GetData() {
+                console.log("Button clicked!"); // Add this line
+
+                if (validateForm()) {
+                    // Proceed with registration
+                    // You can add your registration logic here
+
+                    var successMessage = "Job Seeker details saved successfully.";
+                    var errorMessage = "Failed to save Job Seeker details.";
+                    var isSuccess = true;
+
+                    if (isSuccess) {
+                        alert(successMessage);
+                    } else {
+                        alert(errorMessage);
+                    }
+                }
+            }
+        </script>
 
 
-</body>
+    </body>
 </html>
