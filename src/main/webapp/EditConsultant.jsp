@@ -1,7 +1,7 @@
 <%-- 
     Document   : ConsultantSignUp.jsp
     Created on : 10-Aug-2023, 18:28:53
-    Author     :  DELL
+    Author     : DELL
 --%>
 <%@page import="java.util.List"%>
 
@@ -95,7 +95,7 @@
                 justify-content: center;
                 align-items: center;
                 height: 5vh;
-                background-color: #3a34eb;
+                background-color:#3a34eb;
 
             }
 
@@ -297,13 +297,13 @@
                 </div>
 
                 <div class="row">
-
                     <div class="col-md-6 form-group">
                         <label for="searchCountries"><b>Specialized Countries </b></label>
                         <input type="text" value="<%=d.getSpecializedCountries()%>" name="specializedCountries" class="form-control" id="specializedCountries" placeholder="Search and Add Countries">
                         <small id="specializedCountries_alert"></small>
                         <div id="specializedCountries"></div>
                     </div>
+
                     <div class="col-md-6 form-group">
                         <label for="phoneNumber"><b>Phone Number</b></label>
                         <input type="text" value="<%=d.getPhoneNumber()%>" name="phone" class="form-control" id="phoneNumber" placeholder="Enter Phone Number">
@@ -311,79 +311,75 @@
                     </div>
 
                 </div>
+                <br>
 
 
+                </div>
+                <br>
 
+
+                <input type="hidden" name="id" value="<%=d.getId()%>">
+
+                <button type="submit" onclick="GetData();" class="btn-submit">Update</button>
+                <br><br>
+
+            </form>
         </div>
-        <br>
 
 
-    </div>
-    <br>
+        <script>
+            function validateForm() {
+                var email = document.getElementById("email").value;
+                var password = document.getElementById("password").value;
+                var privacyCheckbox = document.getElementById("privacyCheckbox").checked;
+                var isValid = true;
 
+                if (email === "") {
+                    document.getElementById("email_alert").textContent = "Email is required.";
+                    document.getElementById("email_alert").style.color = "red";
+                    isValid = false;
+                } else {
+                    document.getElementById("email_alert").textContent = "";
+                }
 
-    <input type="hidden" name="id" value="<%=d.getId()%>">
+                if (password === "") {
+                    document.getElementById("password_alert").textContent = "Password is required.";
+                    document.getElementById("password_alert").style.color = "red";
+                    isValid = false;
+                } else {
+                    document.getElementById("password_alert").textContent = "";
+                }
 
-    <button type="submit" onclick="GetData();" class="btn-submit">Update</button>
-    <br><br>
+                if (!privacyCheckbox) {
+                    document.getElementById("privacy_alert").textContent = "You must agree to the Privacy Policy.";
+                    isValid = false;
+                } else {
+                    document.getElementById("privacy_alert").textContent = "";
+                }
 
-</form>
-</div>
-
-
-<script>
-    function validateForm() {
-        var email = document.getElementById("email").value;
-        var password = document.getElementById("password").value;
-        var privacyCheckbox = document.getElementById("privacyCheckbox").checked;
-        var isValid = true;
-
-        if (email === "") {
-            document.getElementById("email_alert").textContent = "Email is required.";
-            document.getElementById("email_alert").style.color = "red";
-            isValid = false;
-        } else {
-            document.getElementById("email_alert").textContent = "";
-        }
-
-        if (password === "") {
-            document.getElementById("password_alert").textContent = "Password is required.";
-            document.getElementById("password_alert").style.color = "red";
-            isValid = false;
-        } else {
-            document.getElementById("password_alert").textContent = "";
-        }
-
-        if (!privacyCheckbox) {
-            document.getElementById("privacy_alert").textContent = "You must agree to the Privacy Policy.";
-            isValid = false;
-        } else {
-            document.getElementById("privacy_alert").textContent = "";
-        }
-
-        return isValid;
-    }
-
-    function GetData() {
-        console.log("Button clicked!"); // Add this line
-
-        if (validateForm()) {
-            // Proceed with registration
-            // You can add your registration logic here
-
-            var successMessage = "Consultant details saved successfully.";
-            var errorMessage = "Failed to save onsultant details.";
-            var isSuccess = true;
-
-            if (isSuccess) {
-                alert(successMessage);
-            } else {
-                alert(errorMessage);
+                return isValid;
             }
-        }
-    }
-</script>
+
+            function GetData() {
+                console.log("Button clicked!"); // Add this line
+
+                if (validateForm()) {
+                    // Proceed with registration
+                    // You can add your registration logic here
+
+                    var successMessage = "Consultant details saved successfully.";
+                    var errorMessage = "Failed to save onsultant details.";
+                    var isSuccess = true;
+
+                    if (isSuccess) {
+                        alert(successMessage);
+                    } else {
+                        alert(errorMessage);
+                    }
+                }
+            }
+        </script>
 
 
-</body>
+    </body>
 </html>
